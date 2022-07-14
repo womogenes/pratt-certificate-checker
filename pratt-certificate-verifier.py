@@ -4,9 +4,10 @@ def pratt_verifier(cert):
     cert is a dictionary where:
         - keys are primes n
         - values are a list:
-            [0] witness
-            [1] list of tuples (p, e) as a factorization
-                of n - 1
+            [0] Witness (int)
+            [1] List of tuples (p, e) as a factorization
+                of n - 1. Alternatively, just the integer
+                p may be provided if e=1.
     """
     # Verify each prime in the certificate
     for n in cert:

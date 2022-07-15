@@ -28,9 +28,12 @@ def pratt_verifier(cert):
             if p != 2 and not p in cert:
                 raise ValueError(
                     f"{p} is not certified as a prime in the factorization of {n} - 1.")
-            prod = (prod * pow(p, e, n - 1)) % (n - 1)
+            prod *= pow(p, e)
 
-        if prod != 0:
+            if prod > n - 1:
+                break
+
+        if prod != n - 1:
             raise ValueError(f"The factorization for {n} - 1 is invalid.")
 
         # Perform a^(n-1) check
